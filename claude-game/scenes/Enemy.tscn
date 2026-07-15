@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsjrfyjhslkbe"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hivqv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kiy5i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mk6qn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_80gqn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynpqa"]
+height = 2.00367
+
+[node name="root" type="CharacterBody3D"]
+
+[node name="EnemyMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_hivqv")
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_kiy5i")
+
+[node name="BodyHitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="BodyHitboxShape" type="CollisionShape3D" parent="BodyHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0243939, 0)
+shape = SubResource("CapsuleShape3D_mk6qn")
+
+[node name="HeadHitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="HeadHitboxShape" type="CollisionShape3D" parent="HeadHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502523, 0)
+shape = SubResource("SphereShape3D_80gqn")
+
+[node name="AttackArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="AttackAreaShape" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("CapsuleShape3D_ynpqa")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29316, 0)
+billboard = 1
+text = "❤❤❤"
+font_size = 56
+outline_size = 8
